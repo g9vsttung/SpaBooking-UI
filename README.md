@@ -21,7 +21,8 @@ https://spabooking.atlassian.net/jira/software/projects/SPAB/boards/1
 
 
 ## About Flutter 
-1. Ảnh được được bỏ vào folder <prooject>/images -> và được khai báo trong pubspec.yaml -> phần assets
+1. File pubspec.yaml chứa các version/ font/ images /... của project
+
 
 
 
