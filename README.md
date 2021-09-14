@@ -22,6 +22,13 @@ https://spabooking.atlassian.net/jira/software/projects/SPAB/boards/1
 
 ## About Flutter 
 1. File pubspec.yaml chứa các version/ font/ images /... của project
+2. Adding 1 images tương thích cho cả android/ios/tablet./.. bằng cách
+> 1. Tải image cần sử dụng về
+> 2. Lên trang appicon.co và bỏ hình vào, chọn flatform để generate
+> 3. Sau khi generate, đối với **ANDROID** , vào android/app/src/main/res, replace/expand các files
+> 4. Đối với **IOS**, ios/Runner/Asets.xcassets
+> 5. Có thể resize/edit image bằng cách, ở android/app/src/main/res, click chuột phải chọn New -> Image Asset
+
 
 
 
