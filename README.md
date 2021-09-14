@@ -20,6 +20,9 @@ https://spabooking.atlassian.net/jira/software/projects/SPAB/boards/1
 2. Lấy id để tạo branch và code. 
 
 
+## About Flutter 
+1. Ảnh được được bỏ vào folder <prooject>/images -> và được khai báo trong pubspec.yaml -> phần assets
+
 
 
 
