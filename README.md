@@ -13,7 +13,7 @@ Các lỗi thường gặp
 1. Khi bắt đầu làm 1 module/function, lên trang jira add tên function/module vào.
 https://spabooking.atlassian.net/jira/software/projects/SPAB/boards/1
   
-<img width="781" alt="create" src="https://user-images.githubusercontent.com/77654085/133294951-90b43edc-8f6a-4ffd-8b92-8c8a0c739079.png"><img width="692" alt="creating" src="https://user-images.githubusercontent.com/77654085/133295257-6202857b-f435-48b6-a942-d3b1abd4dc4c.png">
+<img width="781" alt="create" src="https://user-images.githubusercontent.com/77654085/133294951-90b43edc-8f6a-4ffd-8b92-8c8a0c739079.png">
 <img width="692" alt="creating" src="https://user-images.githubusercontent.com/77654085/133295273-2d7e1575-3630-4a00-85b8-9c3e2d8f65d6.png">
 <img width="415" alt="done" src="https://user-images.githubusercontent.com/77654085/133295475-795adc7e-6844-4faf-8173-81ae9e72392a.png">
 
