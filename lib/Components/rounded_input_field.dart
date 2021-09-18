@@ -15,16 +15,20 @@ class RoundedInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFieldContainer(
-        child: TextField(
-      onChanged: onChanged,
-      decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: Colors.red[100],
-          ),
-          hintText: hintText,
-          border: InputBorder.none),
-    ));
+    Size size=MediaQuery.of(context).size;
+    return Container(
+      width: size.width*0.72,
+      child: TextFieldContainer(
+          child: TextField(
+            onChanged: onChanged,
+            decoration: InputDecoration(
+                icon: Icon(
+                  icon,
+                  color: Colors.red[100],
+                ),
+                hintText: hintText,
+                border: InputBorder.none),
+          )),
+    );
   }
 }
