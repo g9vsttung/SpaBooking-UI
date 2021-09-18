@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spa_booking/Screens/Login/login_screen.dart';
 import 'package:spa_booking/constants.dart';
-
+import 'package:spa_booking/Screens/Home/home_screen.dart';
 void main() {
   runApp(
       MyApp()
