@@ -23,7 +23,7 @@ class AppointmentSpa extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return SpaDetailScreen();
+            return SpaDetailScreen(lastPage: "appointment", searchKey: "",);
           },
         ));
       },

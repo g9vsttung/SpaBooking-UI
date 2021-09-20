@@ -3,13 +3,14 @@ import 'package:flutter/src/material/colors.dart';
 import 'package:spa_booking/Screens/SpaDetail/spa_detail_screen.dart';
 
 class BlockSpaSale extends StatelessWidget {
+  String lastPage="home";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return SpaDetailScreen();
+          return SpaDetailScreen(lastPage: lastPage,searchKey: "",);
         }));
       },
 

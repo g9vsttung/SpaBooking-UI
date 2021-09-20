@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:spa_booking/Screens/SpaDetail/spa_detail_screen.dart';
 
 class SpaResult extends StatelessWidget {
+  String searchKey="";
   String name = "", address = "", feature = "";
   int priceBegin = 0, priceEnd = 0, totalRate = 0;
   double rating = 0;
-
   SpaResult(
       {required this.name,
       required this.address,
@@ -13,7 +13,8 @@ class SpaResult extends StatelessWidget {
       required this.priceBegin,
       required this.priceEnd,
       required this.rating,
-      required this.totalRate});
+      required this.totalRate,
+      required this.searchKey});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SpaResult extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return SpaDetailScreen();
+            return SpaDetailScreen(lastPage: "search",searchKey: searchKey,);
           },
         ));
       },
