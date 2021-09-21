@@ -9,7 +9,9 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: TopBar.getAppBar(size, context),
+
+      appBar: TopBar.getAppBarLocation(size, context),
+
       body: Body(),
       bottomNavigationBar: BottomAppBar(
         color: Colors.red[100],

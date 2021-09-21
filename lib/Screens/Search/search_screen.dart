@@ -14,7 +14,7 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: TopBar.getAppBar(size, context),
+        appBar: TopBar.getAppBarLocation(size, context),
         body: Container(
           child: Column(
             children: [

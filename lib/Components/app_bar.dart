@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spa_booking/Screens/Login/login_screen.dart';
 
 class TopBar {
-  static AppBar getAppBar(Size size, BuildContext context) {
+
+  static AppBar getAppBarLocation(Size size, BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
@@ -40,4 +41,39 @@ class TopBar {
       ),
     );
   }
+
+
+  static AppBar getAppBarHasBackIcon(
+      Size size, BuildContext context, String title, Function() func) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: Stack(alignment: Alignment.centerLeft, children: [
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red[300],
+                      fontSize: 16),
+                ),
+              )
+            ],
+          ),
+        ),
+        IconButton(
+            onPressed: func,
+            icon: Image.asset(
+              "assets/icons/back.png",
+              width: size.width * 0.07,
+            )),
+      ]),
+      backgroundColor: Colors.red[100],
+    );
+  }
+
 }
