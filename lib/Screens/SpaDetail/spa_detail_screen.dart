@@ -32,6 +32,7 @@ class SpaDetailScreen extends StatelessWidget {
                 return AppointmentScreen(finished: false,);
               },));
           }
+
       ),
       body: Body(),
       bottomNavigationBar: Container(

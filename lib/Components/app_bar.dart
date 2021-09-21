@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spa_booking/Screens/Login/login_screen.dart';
 
 class TopBar {
+
   static AppBar getAppBarLocation(Size size, BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
@@ -41,6 +42,7 @@ class TopBar {
     );
   }
 
+
   static AppBar getAppBarHasBackIcon(
       Size size, BuildContext context, String title, Function() func) {
     return AppBar(
@@ -73,4 +75,5 @@ class TopBar {
       backgroundColor: Colors.red[100],
     );
   }
+
 }

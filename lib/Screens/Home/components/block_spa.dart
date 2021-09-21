@@ -3,7 +3,9 @@ import 'package:flutter/src/material/colors.dart';
 import 'package:spa_booking/Screens/SpaDetail/spa_detail_screen.dart';
 
 class BlockSpa extends StatelessWidget {
+
   String lastPage="home";
+
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,9 @@ class BlockSpa extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
+
           return SpaDetailScreen(lastPage: lastPage, searchKey: "",);
+
         }));
       },
       child: Padding(
