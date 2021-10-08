@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/colors.dart';
 import 'package:spa_booking/Components/search_bar.dart';
 import 'package:spa_booking/Screens/Home/components/block_spa.dart';
 import 'package:spa_booking/Screens/Search/search_screen.dart';

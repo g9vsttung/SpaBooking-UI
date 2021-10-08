@@ -117,14 +117,14 @@ class ServiceDetail extends StatelessWidget {
                         children: [
                           if (service.sale > 0)
                             Text(
-                              "\$${service.price * (100 - service.sale) / 100}",
+                              "\$${service.price}",
                               style: TextStyle(
                                   fontSize: 10,
                                   color: ColorConstants.mainColorBold,
                                   decoration: TextDecoration.lineThrough),
                             ),
                           Text(
-                            "\$${service.price}",
+                            "\$${service.price * (100 - service.sale) / 100}",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, color: Colors.red,fontSize: 12),
                           )

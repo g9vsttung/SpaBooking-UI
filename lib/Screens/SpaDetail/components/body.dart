@@ -404,7 +404,7 @@ class _Body extends State<Body> {
   showMyAlertDialog(BuildContext context, Service? service) {
     String img="";
     if(service!.cateType == "Massage")
-      img="spa3.png";
+      img="massage.png";
     else if(service.cateType == "Facial")
       img="facial1.png";
     else if(service.cateType == "Sauna")
