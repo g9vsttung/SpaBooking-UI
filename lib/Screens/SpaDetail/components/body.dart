@@ -403,6 +403,9 @@ class _Body extends State<Body> {
 
   showMyAlertDialog(BuildContext context, Service? service) {
     String img="";
+    Size size=MediaQuery.of(context).size;
+    double sizePopup=(size.width * 0.3 / 4 * 3 + 30) + size.height*0.12;
+    double sizeTopBot=(size.height-sizePopup)/2;
     if(service!.cateType == "Massage")
       img="massage.png";
     else if(service.cateType == "Facial")
@@ -412,9 +415,10 @@ class _Body extends State<Body> {
     else if(service.cateType == "Hot stone therapy")
       img="hotStoneTherapy.png";
     Dialog dialog = new Dialog(
-      insetPadding: EdgeInsets.only(left: 10, right: 10, top: 250, bottom: 300),
+      insetPadding: EdgeInsets.only(left: 10, right: 10, top: sizeTopBot, bottom: sizeTopBot),
+
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(padding: EdgeInsets.only(top: 10, right: 10, left: 10),
