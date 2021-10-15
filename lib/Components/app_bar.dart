@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spa_booking/Screens/Login/login_screen.dart';
+import 'package:spa_booking/Screens/SpaDetail/ChosenService/chosen_service_screen.dart';
+import 'package:spa_booking/models/service.dart';
 import 'package:spa_booking/utils/constants.dart';
 
 class TopBar {
@@ -73,5 +75,69 @@ class TopBar {
       ]),
       backgroundColor: Colors.red[100],
     );
+
   }
+  static AppBar getAppBarSpaDetail(
+      Size size, BuildContext context, String title, Function() func, List<Service> cart,String lastPage,String searchKey) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              IconButton(
+                  onPressed: func,
+                  icon: Image.asset(
+                    "assets/icons/back.png",
+                    width: size.width * 0.07,
+                  )),
+              Container(
+                width: size.width*0.5,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: TextFormField(
+                  onFieldSubmitted: (value){
+                  },
+
+                  decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(5),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide(color: ColorConstants.textColorBold, width: 1)),
+                      hintText: "Search service",
+                      hintStyle: TextStyle(
+                        color: Colors.red[200],
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.red[200],
+                      )),
+                ),
+              )
+
+            ],
+          ),
+
+          if(cart.isEmpty)
+          IconButton(onPressed: (){
+
+          }, icon: Image.asset(StrConstants.iconPath+"cart.png",width: 30,))
+          else
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ChosenServicesScreen(cart: cart,lastPage: lastPage,searchKey: searchKey,);
+              },));
+            }, icon: Image.asset(StrConstants.iconPath+"cartNotNull.png",width: 30,))
+        ],
+      )
+        ,
+      backgroundColor: Colors.red[100],
+    );
+  }
+
 }

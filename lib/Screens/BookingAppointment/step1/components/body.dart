@@ -3,20 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:spa_booking/Screens/BookingAppointment/bookingDetail/booking_detail_screen.dart';
 import 'package:spa_booking/Screens/BookingAppointment/step1/components/back_next_button.dart';
-import 'package:spa_booking/Screens/BookingAppointment/step2/booking_appointment_screen_2.dart';
-import 'package:spa_booking/Screens/BookingAppointment/step4/booking_appointment_screen_4.dart';
-import 'package:spa_booking/models/spa.dart';
+import 'package:spa_booking/models/service.dart';
 import 'package:spa_booking/utils/constants.dart';
 
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class Body extends StatefulWidget {
-  String lastPageOfDetail = "";
-  String searchKey = "";
-  Spa spa;
-  Body({required this.lastPageOfDetail, required this.searchKey,required this.spa});
+  List<Service> cart;
+  Body({required this.cart});
 
   @override
   State<StatefulWidget> createState() {
@@ -183,15 +179,9 @@ class _Body extends State<Body> {
 
           //===================================BOTTOM
           Component.getActionStepButton(context, false, () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) {
-                return BookingAppointmentScreen4(
-                  lastPageOfDetail: widget.lastPageOfDetail,
-                  searchKey: widget.searchKey,
-                  spa: widget.spa,
-                );
-              },
-            ));
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return BookingDetailScreen(cart: widget.cart, date: selectedDate.toString().split(" ")[0], time: selectedTime);
+            },));
           })
         ],
       ),

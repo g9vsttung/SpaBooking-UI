@@ -15,10 +15,10 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ListSpa list=new ListSpa();
-
     List<Service> byDistance=list.getByDistance();
     List<Service> byRate=list.getByRate();
     List<Service> bySale=list.getBySale();
+
     Size size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -85,7 +85,7 @@ class Body extends StatelessWidget {
               )
             ],
           ),
-          Padding(
+            Padding(
               padding: EdgeInsets.only(top: 15, left: 10, right: 10),
               child: Column(children: <Widget>[
                 //=========================================================================================================NEAR SPA

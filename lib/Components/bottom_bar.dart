@@ -11,138 +11,236 @@ class BottomBarSpaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Row(
+    return Padding(padding: EdgeInsets.only(top: 5,bottom: 5),
+    child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         if(selected == "home")
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return MainScreen();
+              },));
             },
-            icon: Image.asset("assets/icons/home.png",color: colorSelected,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/home.png",
+                  color: Colors.white,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Home",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.white),
+                )
+              ],
+            ),
           )
         else
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return MainScreen();
+              },));
             },
-            icon: Image.asset("assets/icons/home.png", color: colorNormal,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/home.png",
+                  color: Colors.black45,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Home",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.black45),
+                )
+              ],
+            ),
           )
         ,
         //=============================================================APPOINTMENT
         if(selected == "appointment")
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return AppointmentScreen(finished: false);
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return MainScreen();
+              },));
             },
-            icon: Image.asset("assets/icons/appointment.png",color: colorSelected,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/appointment.png",
+                  color: Colors.white,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Appointment",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.white),
+                )
+              ],
+            ),
           )
         else
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return AppointmentScreen(finished: false);
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AppointmentScreen(finished: true);
+              },));
             },
-            icon: Image.asset("assets/icons/appointment.png", color: colorNormal,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/appointment.png",
+                  color: Colors.black45,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Appointment",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.black45),
+                )
+              ],
+            ),
           )
         ,
-        //=============================================================SPA
-        if(selected == "spa")
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return SearchScreen(searchKey: "Search");
-                },
-              ));
+        //=============================================================SEARCH
+        if(selected == "search")
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SearchScreen(searchKey: "");
+              },));
             },
-            icon: Image.asset("assets/icons/spa.png",color: colorSelected,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/searchBot.png",
+                  color: Colors.white,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Search",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.white),
+                )
+              ],
+            ),
           )
         else
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return SearchScreen(searchKey: "Search");
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AppointmentScreen(finished: true);
+              },));
             },
-            icon: Image.asset("assets/icons/spa.png", color: colorNormal,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/searchBot.png",
+                  color: Colors.black45,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Search",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.black45),
+                )
+              ],
+            ),
           )
         ,
-        //=============================================================TREATMENT
-        if(selected == "treatment")
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
-            },
-            icon: Image.asset("assets/icons/treatment.png",color: colorSelected,),
-            iconSize: size.width * 0.15,
-          )
-        else
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
-            },
-            icon: Image.asset("assets/icons/treatment.png", color: colorNormal,),
-            iconSize: size.width * 0.15,
-          )
-        ,
+        // //=============================================================TREATMENT
+        // if(selected == "treatment")
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.push(context, MaterialPageRoute(
+        //         builder: (context) {
+        //           return MainScreen();
+        //         },
+        //       ));
+        //     },
+        //     icon: Image.asset("assets/icons/treatment.png",color: colorSelected,),
+        //     iconSize: size.width * 0.09,
+        //   )
+        // else
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.push(context, MaterialPageRoute(
+        //         builder: (context) {
+        //           return MainScreen();
+        //         },
+        //       ));
+        //     },
+        //     icon: Image.asset("assets/icons/treatment.png", color: colorNormal,),
+        //     iconSize: size.width * 0.09,
+        //   )
+        // ,
         //=============================================================
         if(selected == "profile")
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return MainScreen();
+              },));
             },
-            icon: Image.asset("assets/icons/profile.png",color: colorSelected,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/profile.png",
+                  color: Colors.white,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Profile",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.white),
+                )
+              ],
+            ),
           )
         else
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return MainScreen();
-                },
-              ));
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AppointmentScreen(finished: true);
+              },));
             },
-            icon: Image.asset("assets/icons/profile.png", color: colorNormal,),
-            iconSize: size.width * 0.15,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/icons/profile.png",
+                  color: Colors.black45,
+                  width: size.width * 0.09,
+                ),
+                Text(
+                  "Profile",
+                  style: TextStyle(
+                      fontSize: 12, color: Colors.black45),
+                )
+              ],
+            ),
           )
       ],
+    ),
     );
   }
 }

@@ -20,7 +20,7 @@ class Component {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text(
+                  child: const Text(
                     "BACK",
                     style: TextStyle(
                         color: Colors.white,
@@ -37,7 +37,7 @@ class Component {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
+                child: const Text(
                   "NEXT",
                   style: TextStyle(
                     color: Colors.white,
