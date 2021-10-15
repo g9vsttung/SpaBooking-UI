@@ -16,7 +16,10 @@ class ServiceDetail extends StatelessWidget {
   String searchKey="";
   String lastPage="";
   Spa spa;
-  ServiceDetail({required this.service, required this.image,required this.lastPage, required this.searchKey, required this.spa});
+  bool isChoose;
+  // Function()  func;
+  Function() chooseFunc;
+  ServiceDetail({required this.service, required this.image,required this.lastPage, required this.searchKey, required this.spa,required this.isChoose, required this.chooseFunc});
 
   @override
   Widget build(BuildContext context) {
@@ -28,139 +31,140 @@ class ServiceDetail extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(bottom: 10),
-      child: Stack(
-        children: [
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: ColorConstants.mainColor),
-              width: size.width * 0.85,
-              height: size.width * 0.3 / 4 * 3 + 30,
-              child: Padding(
-                padding: EdgeInsets.only(left: 5, right: 5, top: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (service.sale > 0)
-                      Stack(
-                        children: [
-                          Image.asset(
-                            StrConstants.imgPath + image,
-                            width: size.width * 0.27,
-                            height: size.width * 0.3 / 4 * 3,
-                            fit: BoxFit.fill,
-                          ),
-                          Text(
-                            "Sale ${service.sale}%",
-                            style: TextStyle(
-                                backgroundColor: Colors.red[100],
-                                color: Colors.red,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      )
-                    else
-                      Image.asset(
-                        StrConstants.imgPath + image,
-                        width: size.width * 0.27,
-                        height: size.width * 0.3 / 4 * 3,
-                        fit: BoxFit.fill,
-                      ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      width: size.width * 0.5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            service.name + " " + service.cateType,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstants.mainColorBold),
-                          ),
-                          Text(
-                            description,
-                            style: TextStyle(fontSize: 12),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 4,
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: size.width * 0.3 / 4 * 3 + 30 - 10),
-            child: Center(
+      child: GestureDetector(
+        // onTap: func,
+        child: Stack(
+          children: [
+            Center(
               child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: ColorConstants.mainColor),
                 width: size.width * 0.85,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      width: size.width * 0.25,
-                      height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                          border: Border.all(
-                              width: 2, color: ColorConstants.mainColorBold),
-                          color: Colors.white),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          if (service.sale > 0)
-                            Text(
-                              "\$${service.price}",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: ColorConstants.mainColorBold,
-                                  decoration: TextDecoration.lineThrough),
+                height: size.width * 0.3 / 4 * 3 + 30,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 5, right: 5, top: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (service.sale > 0)
+                        Stack(
+                          children: [
+                            Image.asset(
+                              StrConstants.imgPath + image,
+                              width: size.width * 0.27,
+                              height: size.width * 0.3 / 4 * 3,
+                              fit: BoxFit.fill,
                             ),
-                          Text(
-                            "\$${service.price * (100 - service.sale) / 100}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.red,fontSize: 12),
-                          )
-                        ],
+                            Text(
+                              "Sale ${service.sale}%",
+                              style: TextStyle(
+                                  backgroundColor: Colors.red[100],
+                                  color: Colors.red,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        )
+                      else
+                        Image.asset(
+                          StrConstants.imgPath + image,
+                          width: size.width * 0.27,
+                          height: size.width * 0.3 / 4 * 3,
+                          fit: BoxFit.fill,
+                        ),
+                      SizedBox(
+                        width: 5,
                       ),
-                    ),
-                  ],
+                      Container(
+                        width: size.width * 0.5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              service.name + " " + service.cateType,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorConstants.mainColorBold),
+                            ),
+                            Text(
+                              description,
+                              style: TextStyle(fontSize: 12),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 4,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: size.width * 0.3 / 4 * 3 + 30 - 10),
-            child: Center(
+            Padding(
+              padding: EdgeInsets.only(top: size.width * 0.3 / 4 * 3 + 30 - 10),
+              child: Center(
                 child: Container(
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return BookingAppointmentScreen1(lastPageOfDetail: lastPage, searchKey: searchKey, spa: spa);
-                  },));
-                },
-                color: ColorConstants.textColorBold,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5))
-                ),
-                child: Text(
-                  "Book",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                  width: size.width * 0.85,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: size.width * 0.25,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            border: Border.all(
+                                width: 2, color: ColorConstants.mainColorBold),
+                            color: Colors.white),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            if (service.sale > 0)
+                              Text(
+                                "\$${service.price}",
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: ColorConstants.mainColorBold,
+                                    decoration: TextDecoration.lineThrough),
+                              ),
+                            Text(
+                              "\$${service.price * (100 - service.sale) / 100}",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, color: Colors.red,fontSize: 12),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              height: 25,
-              width: 70,
-            )),
-          )
-        ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: size.width * 0.3 / 4 * 3 + 30 - 10),
+              child: Center(
+                  child: Container(
+                child: RaisedButton(
+                  onPressed: () {
+
+                  },
+                  color: ColorConstants.textColorBold,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5))
+                  ),
+                  child: Text(
+                    "Choose",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                height: 25,
+                width: 70,
+              )),
+            )
+          ],
+        ),
       ),
     );
   }

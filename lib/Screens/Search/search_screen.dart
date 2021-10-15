@@ -26,7 +26,7 @@ class SearchScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BottomAppBar(
           color: Colors.red[100],
-          child: BottomBarSpaApp(selected: "spa",),
+          child: BottomBarSpaApp(selected: "search",),
         ));
   }
 }
