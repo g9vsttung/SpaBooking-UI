@@ -21,7 +21,7 @@ class BookingDetailScreen extends StatelessWidget {
           }
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 25, bottom: 0),
+        padding: EdgeInsets.only(left: 20, right: 20,  bottom: 0),
         child: BodyBookingDetail(cart:cart, date: date,time: time,),
       ),
     );

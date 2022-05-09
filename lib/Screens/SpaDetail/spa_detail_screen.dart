@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:spa_booking/Components/app_bar.dart';
 import 'package:spa_booking/Components/pick_function_button.dart';
 import 'package:spa_booking/Screens/Appointment/appointment_upcoming_screen.dart';
@@ -77,10 +78,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return SearchScreen(searchKey: widget.searchKey);
                 },));
-              else if (widget.lastPage == "appointment")
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return AppointmentScreen(finished: false,);
-                },));
+
             },widget.cart,widget.lastPage,widget.searchKey
         ),
         body: getBody(size),
@@ -95,20 +93,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
         children: [
           //==================================================IMAGE
           Container(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                autoPlay: true,
-                aspectRatio: 2.0,
-              ),
-              items: [
-                Image.asset(
-                  "assets/images/spa4.png",
-                  width: size.width * 1,
-                ),
-                Image.asset("assets/images/spa2.png", width: size.width * 1),
-                Image.asset("assets/images/spa3.png", width: size.width * 1),
-              ],
-            ),
+            child: Image.asset(StrConstants.imgPath+widget.spa.image,width: size.width*1,height: size.width/4*2.5,fit: BoxFit.fill,)
           ),
           //===================================================DETAILS
           SizedBox(
@@ -443,23 +428,10 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
   }
 
   showMyAlertDialog( Service? service) {
-    String img = "";
     if(service!=null){
-      TextEditingController _controller = TextEditingController();
       Size size = MediaQuery
           .of(context)
           .size;
-      double imgSize= size.width*0.5;
-      double sizePopup = (size.width * 0.3 / 4 * 3 + 30) + size.height * 0.12;
-      double sizeTopBot = size.height *0.2 / 2;
-      if (service.cateType == "Massage")
-        img = "massage.png";
-      else if (service.cateType == "Facial")
-        img = "facial1.png";
-      else if (service.cateType == "Sauna")
-        img = "sauna.png";
-      else if (service.cateType == "Hot stone therapy")
-        img = "hotStoneTherapy.png";
       Dialog dialog = Dialog(
 
         child: SingleChildScrollView(
@@ -508,7 +480,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
                           Stack(
                             children: [
                               Image.asset(
-                                StrConstants.imgPath + img,
+                                StrConstants.imgPath+service.image,
                                 width: size.width * 0.7,
                                 height: size.width *0.7*3/4,
                                 fit: BoxFit.fill,
@@ -525,7 +497,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
                           )
                         else
                           Image.asset(
-                            StrConstants.imgPath + img,
+                            StrConstants.imgPath+service.image,
                             width: size.width * 0.7,
                             height: size.width *0.7*3/4,
                             fit: BoxFit.fill,
@@ -641,7 +613,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
       return Column(
         children: [
           for (int i = 0; i < list.length; i++)
-            getServiceBox(list[i], "massage.png"),
+            getServiceBox(list[i]),
         ],
       );
     } else if (selectedCate == "Facial") {
@@ -650,7 +622,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
       return Column(
         children: [
           for (int i = 0; i < list.length; i++)
-            getServiceBox(list[i], "facial1.png"),
+            getServiceBox(list[i]),
         ],
       );
     } else if (selectedCate == "Sauna") {
@@ -659,7 +631,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
       return Column(
         children: [
           for (int i = 0; i < list.length; i++)
-            getServiceBox(list[i], "sauna.png"),
+            getServiceBox(list[i]),
         ],
       );
     } else if (selectedCate == "Hot stone therapy") {
@@ -668,7 +640,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
       return Column(
         children: [
           for (int i = 0; i < list.length; i++)
-            getServiceBox(list[i], "hotStoneTherapy.png"),
+            getServiceBox(list[i]),
         ],
       );
     } else
@@ -734,7 +706,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
               ),
             ),
             TextButton(
-              child: Text("OK"),
+              child: Text("OK",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
               onPressed: () {
                 Navigator.pop(context, true);
               },
@@ -750,7 +722,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
       },
     );
   }
-  Widget getServiceBox(Service service, String image, ){
+  Widget getServiceBox(Service service){
     Size size=MediaQuery.of(context).size;
 
     String description = service.name +
@@ -779,7 +751,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
                         Stack(
                           children: [
                             Image.asset(
-                              StrConstants.imgPath + image,
+                              StrConstants.imgPath+service.image,
                               width: size.width * 0.27,
                               height: size.width * 0.3 / 4 * 3,
                               fit: BoxFit.fill,
@@ -796,7 +768,7 @@ class _SpaDetailScreen extends State<SpaDetailScreen> {
                         )
                       else
                         Image.asset(
-                          StrConstants.imgPath + image,
+                          StrConstants.imgPath+service.image,
                           width: size.width * 0.27,
                           height: size.width * 0.3 / 4 * 3,
                           fit: BoxFit.fill,

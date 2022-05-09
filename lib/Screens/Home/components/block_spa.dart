@@ -13,7 +13,7 @@ class BlockSpa extends StatelessWidget {
   String lastPage = "home";
 
   //===============var
-  String image = StrConstants.imgPath+"spa3.png";
+
   Service service;
 
   BlockSpa(
@@ -22,14 +22,7 @@ class BlockSpa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(service.cateType=="Massage")
-      image=StrConstants.imgPath+"massage.png";
-    if(service.cateType=="Facial")
-      image=StrConstants.imgPath+"facial1.png";
-    if(service.cateType=="Sauna")
-      image=StrConstants.imgPath+"sauna.png";
-    if(service.cateType=="Hot stone therapy")
-      image=StrConstants.imgPath+"hotStoneTherapy.png";
+
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
@@ -49,17 +42,15 @@ class BlockSpa extends StatelessWidget {
             children: [
               if (service.sale <=0)
                 Container(
-                  width: size.width * 0.35,
-                  height: size.width * 0.25,
-                  child: Image.asset(image),
+
+                  child: Image.asset(StrConstants.imgPath+service.image,height: size.width * 0.25,width: size.width * 0.35,fit: BoxFit.fill,),
                 )
               else
                 Container(
-                    width: size.width * 0.35,
-                    height: size.width * 0.25,
+
                     child: Stack(
                       children: [
-                        Image.asset(image),
+                        Image.asset(StrConstants.imgPath+service.image,height: size.width * 0.25,width: size.width * 0.35,fit: BoxFit.fill,),
                         Text("Sale ${service.sale}%",
                             style: TextStyle(
                                 backgroundColor: Colors.red[100],
@@ -92,7 +83,7 @@ class BlockSpa extends StatelessWidget {
                         width: 18,
                         color: Color.fromRGBO(196, 196, 196, 1),
                       ),
-                      Text("${service.distance} km",style: TextStyle(
+                      Text("${service.spa.distance} km",style: TextStyle(
                       fontSize: 12),),
                     ],
                   )),

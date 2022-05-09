@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spa_booking/Screens/Appointment/appointment_upcoming_screen.dart';
 import 'package:spa_booking/models/service.dart';
 import 'package:spa_booking/utils/constants.dart';
 
@@ -26,9 +28,13 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
   String x = "";
   double total=0;
   int num=7;
-
+  List<String> servicesId=[];
   @override
   Widget build(BuildContext context) {
+    total=0;
+    servicesId=[];
+    for(Service x in widget.cart)
+      servicesId.add(x.id.toString());
     //Size
     Size size = MediaQuery.of(context).size;
     //calculate total
@@ -51,6 +57,13 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+                child: Image.asset(StrConstants.imgPath+widget.cart[0].spa.image,width: size.width*1,height: size.width/4*2.5,fit: BoxFit.fill,)
+            ),
+            //===================================================DETAILS
+            SizedBox(
+              height: 20,
+            ),
             Center(
               child: Text(
                 widget.cart[0].spa.name,
@@ -118,7 +131,7 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
                   createService(service),
               ],
             ),
-            for(int i=0; i<num;i++)
+
               SizedBox(
                 height: 30,
               ),
@@ -163,9 +176,14 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
                   onTap: (){},
                   child: Container(
                     width: size.width * 0.4,
-
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        List<String> listId=[];
+                        for(Service x in widget.cart){
+                          listId.add(x.id.toString());
+                        }
+                        showMyAlertDialog(listId);
+                      },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
@@ -248,7 +266,7 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
                       width: 5,
                     ),
                     Text(
-                      "\$${service.price * service.sale / 100}",
+                      "\$${service.price - service.price * service.sale / 100}",
                       style: TextStyle(fontSize: 14, color: Colors.red),
                     ),
                   ],
@@ -257,4 +275,83 @@ class _BodyBookingDetail extends State<BodyBookingDetail> {
           ),
         ));
   }
+  showMyAlertDialog( List<String> list) {
+      Size size = MediaQuery
+          .of(context)
+          .size;
+
+      Dialog dialog = Dialog(
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorConstants.mainColor,
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(StrConstants.iconPath+"success.png",width: 25,),
+                    SizedBox(width: 10,),
+                    Text("Booking Success",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20
+                    ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: GestureDetector(
+                    onTap: (){
+                      //setSessionData(servicesId);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return AppointmentScreen(date: widget.date,time: widget.time,);
+                      },));
+                    },
+                    child: Container(
+
+                      child: Text(
+                        "OK",style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent,
+                          fontSize: 20
+                      ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+
+        backgroundColor: Colors.white,
+      );
+      Future<dynamic> futureValue = showGeneralDialog(
+        context: context,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return dialog;
+        },
+      ).then((value) {
+        Service x=value as Service;
+        if(x!=null)
+          setState(() {
+            widget.cart.add(value);
+          });
+      });
+    }
+    Future<void> setSessionData (List<String> list) async {
+      final prefs = await SharedPreferences.getInstance();
+      List<String>? oldList=prefs.getStringList("bought");
+      oldList!.addAll(list);
+      prefs.setStringList("bought", oldList);
+    }
+
+
+
 }

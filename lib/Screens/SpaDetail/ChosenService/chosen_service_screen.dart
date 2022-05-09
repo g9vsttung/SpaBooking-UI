@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spa_booking/Components/app_bar.dart';
 import 'package:spa_booking/Screens/SpaDetail/spa_detail_screen.dart';
 import 'package:spa_booking/models/service.dart';
+import 'package:spa_booking/models/spa.dart';
 import 'package:spa_booking/utils/constants.dart';
 
 class ChosenServicesScreen extends StatefulWidget {
@@ -75,7 +76,7 @@ class _ChosenServicesScreen extends State<ChosenServicesScreen>{
                         Stack(
                           children: [
                             Image.asset(
-                              StrConstants.imgPath + image,
+                              StrConstants.imgPath+service.image,
                               width: size.width * 0.27,
                               height: size.width * 0.3 / 4 * 3,
                               fit: BoxFit.fill,
@@ -92,7 +93,7 @@ class _ChosenServicesScreen extends State<ChosenServicesScreen>{
                         )
                       else
                         Image.asset(
-                          StrConstants.imgPath + image,
+                          StrConstants.imgPath+service.image,
                           width: size.width * 0.27,
                           height: size.width * 0.3 / 4 * 3,
                           fit: BoxFit.fill,
@@ -174,7 +175,12 @@ class _ChosenServicesScreen extends State<ChosenServicesScreen>{
                     child: RaisedButton(
                       onPressed: () {
                         setState(() {
+                          Spa spa=widget.cart[0].spa;
                           widget.cart.remove(service);
+                          if(widget.cart.isEmpty)
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return SpaDetailScreen(lastPage: widget.lastPage, searchKey: widget.searchKey, spa: spa);
+                            },));
                         });
                       },
                       color: Colors.orange,

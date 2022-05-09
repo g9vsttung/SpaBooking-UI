@@ -93,7 +93,7 @@ class BottomBarSpaApp extends StatelessWidget {
           GestureDetector(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return AppointmentScreen(finished: true);
+                return AppointmentScreen(date: "2021-10-19",time: "09:00",);
               },));
             },
             child: Column(
@@ -143,7 +143,7 @@ class BottomBarSpaApp extends StatelessWidget {
           GestureDetector(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return AppointmentScreen(finished: true);
+                return AppointmentScreen(date: "",time: "",);
               },));
             },
             child: Column(
@@ -194,9 +194,7 @@ class BottomBarSpaApp extends StatelessWidget {
         if(selected == "profile")
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return MainScreen();
-              },));
+
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -218,9 +216,7 @@ class BottomBarSpaApp extends StatelessWidget {
         else
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return AppointmentScreen(finished: true);
-              },));
+
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:spa_booking/models/feedback.dart';
 import 'package:spa_booking/models/service.dart';
 class Spa  {
-  String _name,_address;
-  double _rate;
-  double _distance;
-  int _totalRate;
-  String _phone;
-  // String _image;
-
-  List<Service> _services=[];
-
-  Spa(this._name,this._rate,this._address,this._distance,this._totalRate,this._phone);
-  set name(name){_name=name;}
-  set rate(rate){_rate=rate;}
-  // set image(image){_image=image;}
-  set totalRate(totalRate){_totalRate=totalRate;}
-  set address(address){_address=address;}
-  set services(services){_services=services;}
-  set distance(distance){_distance=distance;}
-  set phone(phone){_phone=phone;}
-
-  String get name => _name;
-  String get phone => _phone;
-  // String get image => _image;
-  double get rate => _rate;
-  int get totalRate => _totalRate;
-  double get distance => _distance;
-  String get address => _address;
-  List<Service> get services => _services;
-
+  String name,address;
+  double rate;
+  double distance;
+  int totalRate;
+  String phone;
+  String image;
+  int id;
+  String date="2021-10-12";
+  String time="09:00";
+  FeedbackModel feedback=FeedbackModel(content: "", rate: 0, improve: "");
+  bool feedbacked=false;
+  List<Service> services=[];
+  Spa(this.id,this.name,this.rate,this.address,this.distance,this.totalRate,this.phone,this.image,[FeedbackModel? feedback]){
+    if(feedback!=null)
+      this.feedback=feedback;
+  }
   List<Service> getByCate(String cate) {
     List<Service> result= [];
     result.addAll(services);

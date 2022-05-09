@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:spa_booking/Screens/AppointmentDetail/appointment_detail_screen.dart';
 import 'package:spa_booking/models/service.dart';
+import 'package:spa_booking/models/spa.dart';
 import 'package:spa_booking/utils/constants.dart';
 class UpcomingServiceBox extends StatelessWidget{
-  Service service;
-  UpcomingServiceBox({required this.service});
+  Spa spa;
+  Function() cancelFunc;
+  UpcomingServiceBox({required this.spa, required this.cancelFunc});
   @override
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
@@ -25,7 +28,7 @@ class UpcomingServiceBox extends StatelessWidget{
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(StrConstants.imgPath+"spa1.png",width: size.width*0.28,height: size.width*0.28,fit: BoxFit.fill,),
+                  Image.asset(StrConstants.imgPath+spa.image,width: size.width*0.28,height: size.width*0.28,fit: BoxFit.fill,),
                   SizedBox(width: 8,),
                   Container(
                     width: size.width*0.55,
@@ -33,7 +36,7 @@ class UpcomingServiceBox extends StatelessWidget{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          service.name,
+                          spa.name,
                           style: TextStyle(
                               color: ColorConstants.textColorBold,
                               fontWeight: FontWeight.bold,
@@ -43,22 +46,22 @@ class UpcomingServiceBox extends StatelessWidget{
                         ),
                         SizedBox(height: 3,),
                         Text(
-                          "Address: "+service.spa.address,
+                          "Address: "+spa.address,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 3,),
                         Text(
-                          "Date: "+service.spa.address,
+                          "Date: "+spa.date,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 3,),
                         Text(
-                          "Time: "+service.spa.address,
+                          "Time: "+spa.time,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 3,),
                         Text(
-                          "Phone: "+service.spa.phone,
+                          "Phone: "+spa.phone,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 3,),
@@ -75,7 +78,7 @@ class UpcomingServiceBox extends StatelessWidget{
                     width: 70,
                     height: 22,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: cancelFunc,
                       color: Colors.black45,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(5))
@@ -95,7 +98,11 @@ class UpcomingServiceBox extends StatelessWidget{
                     width: 70,
                     height: 22,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return AppointmentDetailScreen(spa: spa);
+                        },));
+                      },
                       color: ColorConstants.mainColorBold,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(5))

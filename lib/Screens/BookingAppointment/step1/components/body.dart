@@ -142,7 +142,7 @@ class _Body extends State<Body> {
                           ),
                           Column(
                             children: [
-                              getBoxTime("13:00",true),
+                              getBoxTime("13:00",false),
                               getBoxTime("13:20",true),
                               getBoxTime("13:40",true),
                             ],
@@ -163,9 +163,9 @@ class _Body extends State<Body> {
                           ),
                           Column(
                             children: [
-                              getBoxTime("15:00",true),
-                              getBoxTime("15:20",true),
-                              getBoxTime("15:40",true),
+                              getBoxTime("16:00",true),
+                              getBoxTime("16:20",true),
+                              getBoxTime("16:40",true),
                             ],
                           ),
                         ],
